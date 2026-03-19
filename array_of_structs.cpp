@@ -65,12 +65,22 @@ void readTemperatures(TemperatureRecord records[], int& size) {
 
 // TODO: Step 7 - Implement printTemperatures()
 // Print all stored temperatures in a formatted table
+void printTemperatures(const TemperatureRecord records[], int size) {
+    int i;
+    cout << "Day" << "/t Temperature" << endl;
+    for (i = 0; i < size; i++) {
+        cout << records[i].day << records[i].temperature << endl;
+    }
+}
 
 // TODO: Step 8 - Implement findMin()
 // Return the TemperatureRecord with the lowest temperature
 
+
 // TODO: Step 9 - Implement findMax()
 // Return the TemperatureRecord with the highest temperature
 
+
 // TODO: Step 10 - Implement findAverage()
 // Compute and return the average temperature
+

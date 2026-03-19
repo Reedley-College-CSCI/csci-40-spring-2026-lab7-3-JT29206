@@ -30,15 +30,16 @@ int main() {
     readTemperatures(records, size);
 
     // TODO: Step 4 - Print the temperatures
-    cout << "Temperatures: " << endl;
+    cout << "Record of Temperatures: " << endl;
     printTemperatures(records, size);
 
     // TODO: Step 5 - Compute and display min, max, and average temperature
     TemperatureRecord minRec = findMin(records, size);
     TemperatureRecord maxRec = findMax(records, size);
     double average = findAverage(records, size);
-    cout << "Minimum Temperature: " << minRec.temperature << " Day: " << minRec.day << endl;
-    cout << "Maximum Temperature: " << maxRec.temperature << " Day: " << maxRec.day << endl;
+    cout << "Results:" << endl;
+    cout << "Minimum Temperature: " << minRec.temperature << " (Day: " << minRec.day << ")" << endl;
+    cout << "Maximum Temperature: " << maxRec.temperature << " (Day: " << maxRec.day << ")" << endl;
     cout << "Average Temperature: " << average << endl;
 
     return 0;
@@ -50,13 +51,14 @@ void readTemperatures(TemperatureRecord records[], int& size) {
 
     ifstream infile("temps.txt");
 
-    if (!infile.is_open()) {
+    if (!infile) {
         cout << "Error: Cannot open file" << endl;
+        return;
     }
     size = 0;
     while (infile >> records[size].day >> records[size].temperature) {
         size++;
-        if (size > MAX_DAYS) {
+        if (size >= MAX_DAYS) {
             break;
         }
     }
@@ -67,9 +69,9 @@ void readTemperatures(TemperatureRecord records[], int& size) {
 // Print all stored temperatures in a formatted table
 void printTemperatures(const TemperatureRecord records[], int size) {
     int i;
-    cout << "Day" << "/t Temperature" << endl;
+    cout << "Day\tTemperature" << endl;
     for (i = 0; i < size; i++) {
-        cout << records[i].day << records[i].temperature << endl;
+        cout << records[i].day << "\t" << records[i].temperature << endl;
     }
 }
 
